@@ -1,0 +1,90 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url('background\ image.jpg'); /* Adicione o caminho para sua imagem */
+    background-size: cover; /* Ajusta a imagem para cobrir todo o fundo */
+    background-position: center; /* Centraliza a imagem */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column; /* Empilha os itens verticalmente */
+    align-items: center; /* Centraliza os itens horizontalmente */
+    background: rgba(255, 255, 255, 0.8); /* Fundo branco com opacidade para melhor legibilidade */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
+.login-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.login-header img {
+    width: 50px; /* Ajuste o tamanho da imagem conforme necessário */
+    height: 50px; /* Ajuste o tamanho da imagem conforme necessário */
+    margin-right: 10px;
+}
+
+.login-header img:hover {
+    transform: scale(1.1); /* Efeito de zoom ao passar o mouse */
+}
+
+h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #ff5722; /* Laranja escuro */
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ffc107; /* Borda laranja */
+    border-radius: 5px;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #ff9800; /* Laranja mais escuro ao focar */
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #ff9800; /* Botão laranja */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #e68900; /* Laranja mais escuro ao passar o mouse */
+    transform: translateY(-2px);
+}
+
+#message {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+#message.red {
+    color: #dc3545; /* Vermelho para mensagens de erro */
+}
+
+#message.green {
+    color: #28a745; /* Verde para mensagens de sucesso */
+}
