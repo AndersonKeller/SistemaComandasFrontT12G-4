@@ -56,3 +56,23 @@ function playSound() {
     sound.currentTime = 0; // Reinicia o som se estiver tocando
     sound.play();
 }
+function playSound() {
+    var sound = new Audio('\somsino.mp3'); // Adicione o caminho do seu arquivo de som
+    sound.currentTime = 0; // Reinicia o som se estiver tocando
+    sound.play();
+}
+function playSound() {
+    var sound = new Audio('\somsino.mp3'); // Adicione o caminho do seu arquivo de som
+    sound.currentTime = 0; // Reinicia o som se estiver tocando
+    sound.play();
+}
+function playSound() {
+    var sound = new Audio('\somsino.mp3'); // Adicione o caminho do seu arquivo de som
+    sound.currentTime = 0; // Reinicia o som se estiver tocando
+    sound.play();
+}
+function playSound() {
+    var sound = new Audio('\somsino.mp3'); // Adicione o caminho do seu arquivo de som
+    sound.currentTime = 0; // Reinicia o som se estiver tocando
+    sound.play();
+}
