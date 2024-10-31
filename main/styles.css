@@ -1,0 +1,53 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+header {
+    /* Você pode ajustar a altura do cabeçalho conforme necessário */
+    height: 200px; /* Altura do cabeçalho */
+    overflow: hidden; /* Para evitar que a imagem transborde */
+}
+
+.header-image {
+    width: 100%; /* Largura total do cabeçalho */
+    height: auto; /* Manter a proporção da imagem */
+}
+
+.main {
+    text-align: center;
+    margin-top: 20px; /* Espaço entre o cabeçalho e os botões */
+}
+
+.button-container {
+    display: flex;
+    flex-direction: row; /* Alinha os botões na horizontal */
+    gap: 15px; /* Espaçamento entre os botões */
+    justify-content: center; /* Centraliza os botões */
+}
+
+.menu-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.menu-button:hover {
+    background-color: #218838;
+}
