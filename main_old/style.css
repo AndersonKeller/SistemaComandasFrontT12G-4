@@ -1,4 +1,4 @@
-/* Estilos Gerais */
+/* Reset básico */
 * {
     margin: 0;
     padding: 0;
@@ -6,52 +6,52 @@
     font-family: Arial, sans-serif;
 }
 
+/* Corpo e Container */
 body {
-    background-color: #f4f4f9;
+    background-color: #f2f2f7;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    margin: 0;
 }
 
-/* Container Principal */
 .container {
     background-color: #ffffff;
     padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
     text-align: center;
-    width: 100%;
-    max-width: 400px;
+    width: 90%;
+    max-width: 350px;
 }
 
+/* Título */
 h1 {
-    font-size: 24px;
+    font-size: 26px;
     color: #333333;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 /* Botões */
 .button {
-    background-color: #007bff;
+    background-color: #ff6b6b;
     color: #ffffff;
     border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
+    border-radius: 8px;
+    padding: 12px;
     font-size: 16px;
+    font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin-top: 10px;
+    margin-bottom: 15px;
     width: 100%;
 }
 
 .button:hover {
-    background-color: #0056b3;
+    background-color: #ff3d3d;
 }
 
-#status {
-    font-size: 16px;
-    color: #555;
-    margin-top: 20px;
+/* Efeito para o último botão */
+.button:last-child {
+    margin-bottom: 0;
 }

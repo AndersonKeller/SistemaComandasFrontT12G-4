@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio Cluckin' Bell</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Itens do Cardápio</h1>
+        
+        <button id="openModal">Adicionar Novo Item</button>
+
+        <!-- Contêiner de Resultados -->
+        <div id="resultContainer"></div>
+    </div>
+
+    <!-- Modal de Edição e Criação -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span id="closeModal" class="close">&times;</span>
+            <h2 id="modalTitle">Adicionar Item ao Cardápio</h2>
+            <input type="text" id="editTitulo" placeholder="Título" required>
+            <input type="text" id="editDescricao" placeholder="Descrição" required>
+            <input type="number" step="0.01" id="editPreco" placeholder="Preço" required>
+            <label>
+                <input type="checkbox" id="editPossuiPreparo"> Requer Preparo
+            </label>
+            <button id="saveEdit">Salvar Alterações</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
