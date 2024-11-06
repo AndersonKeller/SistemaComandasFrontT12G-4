@@ -7,12 +7,19 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Tela de Comanda</h1>
-        <button class="button" id="criarComanda">Criar Comanda</button>
-        <button class="button" id="atualizarComanda">Atualizar Comanda</button>
-        <div id="status" style="margin-top: 20px;"></div>
+    <div>
+        <button id="criarComanda">Criar Comanda</button>
+        <button id="atualizarComanda">Atualizar Comanda</button>
     </div>
+    
+    <div id="formContainer" style="display:none;">
+        <input type="text" id="numeroComandaInput" placeholder="Digite o número da comanda" />
+        <button id="submitComanda">Enviar</button>
+        <button id="cancelar">Cancelar</button>
+    </div>
+    
+    <div id="status"></div>
+    
 
     <script src="script.js"></script>
 </body>
