@@ -1,27 +1,34 @@
+let currentAction = '';
+
 document.getElementById('criarComanda').addEventListener('click', function() {
-    criarComanda();
+    currentAction = 'criar';
+    showForm();
 });
 
 document.getElementById('atualizarComanda').addEventListener('click', function() {
-    atualizarComanda();
+    currentAction = 'atualizar';
+    showForm();
 });
 
-function criarComanda() {
-    
-    const numeroComanda = prompt('Digite o número da nova comanda:');
+document.getElementById('submitComanda').addEventListener('click', function() {
+    const numeroComanda = document.getElementById('numeroComandaInput').value;
     if (numeroComanda) {
-        document.getElementById('status').innerText = 'Comanda ' + numeroComanda + ' criada com sucesso!';
+        document.getElementById('status').innerText = `Comanda ${numeroComanda} ${currentAction === 'criar' ? 'criada' : 'atualizada'} com sucesso!`;
+        hideForm();
+        document.getElementById('numeroComandaInput').value = ''; // Limpa o campo após enviar
     } else {
-        alert('Número da comanda não pode ser vazio.');
+        document.getElementById('status').innerText = 'Número da comanda não pode ser vazio.';
     }
+});
+
+document.getElementById('cancelar').addEventListener('click', function() {
+    hideForm();
+});
+
+function showForm() {
+    document.getElementById('formContainer').style.display = 'block';
 }
 
-function atualizarComanda() {
-    
-    const numeroComanda = prompt('Digite o número da comanda que deseja atualizar:');
-    if (numeroComanda) {
-        document.getElementById('status').innerText = 'Comanda ' + numeroComanda + ' atualizada com sucesso!';
-    } else {
-        alert('Número da comanda não pode ser vazio.');
-    }
+function hideForm() {
+    document.getElementById('formContainer').style.display = 'none';
 }
