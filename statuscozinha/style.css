@@ -9,7 +9,8 @@ body {
     background-color: #f0f0f0;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    flex-direction: column;
     height: 100vh;
 }
 
@@ -18,7 +19,8 @@ body {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    width: 600px;
+    overflow: auto;
 }
 
 h1 {
@@ -27,44 +29,62 @@ h1 {
     margin-bottom: 20px;
 }
 
-label {
-    font-weight: bold;
-    margin-bottom: 5px;
-    display: block;
+.tabela {
+    margin-bottom: 20px;
 }
 
-input {
+h2 {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+table {
     width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+
+th, td {
     padding: 8px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    text-align: left;
+    border: 1px solid #ddd;
 }
 
 button {
-    width: 48%;
+    width: 100%;
     padding: 10px;
-    margin: 5px;
+    margin: 5px 0;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-}
-
-button#criar-btn {
-    background-color: #28a745;
-    color: white;
-}
-
-button#cancelar-btn {
-    background-color: #dc3545;
-    color: white;
 }
 
 button:hover {
     opacity: 0.8;
 }
 
-/* Estilo para a mensagem de feedback */
+button#avancar-novo {
+    background-color: #28a745;
+    color: white;
+}
+
+button#voltar-em-preparo, button#avancar-em-preparo {
+    background-color: #17a2b8;
+    color: white;
+}
+
+button#voltar-pronto {
+    background-color: #dc3545;
+    color: white;
+}
+
+button#finalizar {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Estilos para a área de feedback */
 .feedback {
     margin-top: 20px;
     padding: 10px;
