@@ -1,24 +1,39 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-image: url('background\ image.jpg'); /* Adicione o caminho para sua imagem */
-    background-size: cover; /* Ajusta a imagem para cobrir todo o fundo */
-    background-position: center; /* Centraliza a imagem */
+    margin: 0;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
+    overflow: hidden; /* Garante que não apareçam barras de rolagem */
+    position: relative;
+}
+
+body::before {
+    content: ''; /* Cria um pseudo-elemento vazio */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('background image.jpg'); /* Caminho correto da imagem */
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px); /* Aplica o desfoque */
+    z-index: -1; /* Coloca o pseudo-elemento atrás do conteúdo */
 }
 
 .login-container {
     display: flex;
     flex-direction: column; /* Empilha os itens verticalmente */
     align-items: center; /* Centraliza os itens horizontalmente */
+    justify-content: center; /* Garante que os itens fiquem centralizados verticalmente */
     background: rgba(255, 255, 255, 0.8); /* Fundo branco com opacidade para melhor legibilidade */
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    width: 100%;
+    max-width: 400px; /* Limita a largura máxima da caixa de login */
     text-align: center;
 }
 
@@ -46,12 +61,13 @@ h2 {
 }
 
 input {
-    width: 100%;
-    padding: 12px;
+    width: 100%; /* Faz os inputs ocuparem toda a largura disponível */
+    padding: 12px; /* Define o padding para que fique consistente com o botão */
     margin: 10px 0;
     border: 1px solid #ffc107; /* Borda laranja */
     border-radius: 5px;
     transition: border-color 0.3s;
+    box-sizing: border-box; /* Garante que o padding não afete a largura total */
 }
 
 input:focus {
@@ -60,8 +76,8 @@ input:focus {
 }
 
 button {
-    width: 100%;
-    padding: 12px;
+    width: 100%; /* Faz o botão ocupar toda a largura disponível */
+    padding: 12px; /* Mesma quantidade de padding que o input */
     background-color: #ff9800; /* Botão laranja */
     color: white;
     border: none;
@@ -69,6 +85,7 @@ button {
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s, transform 0.2s;
+    box-sizing: border-box; /* Garante que o padding não afete a largura total */
 }
 
 button:hover {

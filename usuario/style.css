@@ -6,14 +6,32 @@
 }
 
 body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     background-color: #f0f8ff;
+    position: relative; /* Necessário para o posicionamento do pseudo-elemento */
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../login/background image.jpg'); /* Caminho correto da imagem */
+    background-size: cover;
+    background-position: center;
+    filter: blur(3px); /* Aplica o desfoque à imagem de fundo */
+    z-index: -1; /* Garante que o fundo desfocado fique atrás do conteúdo */
 }
 
 .container {
+    position: relative; /* Garante que o conteúdo fique acima do fundo desfocado */
+    z-index: 1;
     width: 80%;
     max-width: 800px;
     text-align: center;
@@ -21,7 +39,8 @@ body {
 
 h1 {
     margin-bottom: 20px;
-    color: #333;
+    color: #ffc107;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);  /* Adiciona sombra preta à letra */
 }
 
 button {
@@ -32,7 +51,6 @@ button {
     border-radius: 4px;
     cursor: pointer;
 }
-
 
 #openModal {
     background-color: #007bff;
@@ -51,6 +69,7 @@ button {
     justify-content: center;
     align-items: center;
     animation: fadeIn 0.3s;
+    z-index: 9999; /* Coloca o modal na frente de todos os outros elementos */
 }
 
 .modal-content {
@@ -69,7 +88,6 @@ button {
     color: #333;
 }
 
-
 h2 {
     margin-bottom: 20px;
     color: #007bff;
@@ -79,7 +97,7 @@ h2 {
 input[type="text"], input[type="email"], input[type="password"] {
     width: calc(100% - 20px);
     padding: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 30px; /* Aumentando o espaço abaixo do campo de email */
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 1rem;
@@ -93,6 +111,7 @@ input[type="text"], input[type="email"], input[type="password"] {
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
+    margin-top: 20px; /* Adicionando espaço acima do botão de salvar */
     transition: background-color 0.3s;
 }
 
@@ -133,6 +152,60 @@ input[type="text"], input[type="email"], input[type="password"] {
 .delete-button {
     background-color: #dc3545;
     color: #fff;
+}
+
+/* Modal de Confirmação de Exclusão */
+#confirmDeleteModal {
+    display: none; /* Inicialmente escondido */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo escuro */
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s;
+    z-index: 9999; /* Coloca o modal na frente de todos os outros elementos */
+}
+
+#confirmDeleteModal .modal-content {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+#confirmDeleteModal h2 {
+    color: #dc3545; /* Cor vermelha para o título */
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+#confirmDeleteModal .close {
+    float: right;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+}
+
+#confirmDeleteModal button {
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#confirmDeleteButton {
+    background-color: #dc3545; /* Botão vermelho para confirmar exclusão */
+    color: #fff;
+}
+
+#cancelDeleteButton {
+    background-color: #ffc107; /* Botão amarelo para cancelar */
+    color: #fff;
+    margin-left: 10px;
 }
 
 /* Animação do Modal */
