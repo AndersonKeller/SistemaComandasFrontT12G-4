@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mesas de Restaurante</title>
+    <!-- Link para o CSS externo -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1>Mesas do Restaurante</h1>
+    <div id="mesas" class="mesas-container">
+        <!-- As mesas serão inseridas aqui via JavaScript -->
+    </div>
+
+    <!-- Modal para exibir detalhes das comandas -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span id="closeModal" class="close">&times;</span>
+            <h2>Detalhes das Comandas</h2>
+            <p><strong>Número da Mesa:</strong> <span id="numeroMesa"></span></p>
+            <h3>Comandas:</h3>
+            <div id="comandasDetalhes"></div>
+
+            <!-- Ações no Modal -->
+            <div>
+                <button id="adicionarComanda">Adicionar Comanda</button>
+                <button id="removerComanda">Remover Comanda</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Link para o JavaScript externo -->
+    <script src="script.js"></script>
+
+</body>
+</html>
