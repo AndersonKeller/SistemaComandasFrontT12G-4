@@ -6,14 +6,32 @@
 }
 
 body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     background-color: #f0f8ff;
+    position: relative; /* Necessário para o posicionamento do pseudo-elemento */
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../login/background image.jpg'); /* Caminho correto da imagem */
+    background-size: cover;
+    background-position: center;
+    filter: blur(3px); /* Aplica o desfoque à imagem de fundo */
+    z-index: -1; /* Garante que o fundo desfocado fique atrás do conteúdo */
 }
 
 .container {
+    position: relative; /* Garante que o conteúdo fique acima do fundo desfocado */
+    z-index: 1;
     width: 80%;
     max-width: 800px;
     text-align: center;
@@ -21,7 +39,8 @@ body {
 
 h1 {
     margin-bottom: 20px;
-    color: #333;
+    color: #ffc107;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);  /* Adiciona sombra preta à letra */
 }
 
 button {
@@ -32,7 +51,6 @@ button {
     border-radius: 4px;
     cursor: pointer;
 }
-
 
 #openModal {
     background-color: #007bff;
@@ -51,6 +69,7 @@ button {
     justify-content: center;
     align-items: center;
     animation: fadeIn 0.3s;
+    z-index: 9999; /* Coloca o modal na frente de todos os outros elementos */
 }
 
 .modal-content {
@@ -62,13 +81,26 @@ button {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
+/* Botão de Fechar (X) - Vermelho */
 .close {
-    float: right;
-    font-size: 24px;
+    width: 30px;  /* Tamanho fixo, igual para largura e altura */
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;  /* Tamanho do 'X' */
+    background-color: transparent;  /* Remover o fundo azul */
+    border: 2px solid #dc3545;  /* Borda vermelha para o "X" */
+    border-radius: 20%;  /* Deixa o botão circular */
+    color: #dc3545;  /* Cor vermelha do 'X' */
     cursor: pointer;
-    color: #333;
+    transition: background-color 0.3s, color 0.3s;  /* Adiciona um efeito de transição suave */
 }
 
+.close:hover {
+    background-color: #f0f0f0;  /* Fundo claro ao passar o mouse */
+    color: #dc3545;  /* Cor vermelha para o 'X' quando hover */
+}
 
 h2 {
     margin-bottom: 20px;
@@ -79,7 +111,7 @@ h2 {
 input[type="text"], input[type="email"], input[type="password"] {
     width: calc(100% - 20px);
     padding: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 30px; /* Aumentando o espaço abaixo do campo de email */
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 1rem;
@@ -87,12 +119,13 @@ input[type="text"], input[type="email"], input[type="password"] {
 
 #saveEdit {
     padding: 10px;
-    background-color: #28a745;
+    background-color: #28a745; /* Verde para salvar */
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
+    margin-top: 20px; /* Adicionando espaço acima do botão de salvar */
     transition: background-color 0.3s;
 }
 
@@ -135,6 +168,61 @@ input[type="text"], input[type="email"], input[type="password"] {
     color: #fff;
 }
 
+/* Modal de Confirmação de Exclusão */
+#confirmDeleteModal {
+    display: none; /* Inicialmente escondido */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo escuro */
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s;
+    z-index: 9999; /* Coloca o modal na frente de todos os outros elementos */
+}
+
+#confirmDeleteModal .modal-content {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+#confirmDeleteModal h2 {
+    color: #000000; /* Cor vermelha para o título */
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+#confirmDeleteModal .close {
+    float: right;
+    font-size: 24px;
+    cursor: pointer;
+    color: #ffffff;
+    background-color: #dc3545;
+}
+
+#confirmDeleteModal button {
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#confirmDeleteButton {
+    background-color: #28a745; /* Botão verde para confirmar exclusão */
+    color: #fff;
+}
+
+#cancelDeleteButton {
+    background-color: #dc3545; /* Botão vermelho para cancelar */
+    color: #fff;
+    margin-left: 10px;
+}
+
 /* Animação do Modal */
 @keyframes fadeIn {
     from {
@@ -143,4 +231,28 @@ input[type="text"], input[type="email"], input[type="password"] {
     to {
         opacity: 1;
     }
+}
+/* Estilo geral do botão de voltar */
+#backButton {
+    background-color: #dc3545; /* Cor de fundo verde */
+    color: white; /* Texto branco */
+    border: none; /* Remove a borda */
+    padding: 10px 20px; /* Espaçamento interno */
+    font-size: 16px; /* Tamanho da fonte */
+    cursor: pointer; /* Aponta para o cursor de clique */
+    border-radius: 5px; /* Bordas arredondadas */
+    transition: background-color 0.3s ease; /* Efeito de transição para mudança de cor */
+    position: fixed; /* Fixa o botão na tela */
+    top: 20px; /* Distância de 20px da parte superior */
+    left: 20px; /* Distância de 20px da parte esquerda */
+    z-index: 1000; /* Garante que o botão fique acima de outros elementos */
+}
+
+#backButton:hover {
+    background-color: #a32a36; /* Cor de fundo mais escura quando o mouse passa por cima */
+}
+
+#backButton:focus {
+    outline: none; /* Remove o contorno padrão ao focar */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Adiciona um efeito de foco com sombra azul */
 }

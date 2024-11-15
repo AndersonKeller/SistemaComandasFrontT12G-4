@@ -1,4 +1,5 @@
-let currentEditId = null; // Para armazenar o ID do usuario que está sendo editado
+let currentEditId = null; // Para armazenar o ID do usuário que está sendo editado
+let userToDeleteId = null; // Para armazenar o ID do usuário que será excluído
 
 // Carrega os itens ao carregar a página
 window.addEventListener("DOMContentLoaded", fetchUsuarios);
@@ -26,8 +27,9 @@ async function fetchUsuarios() {
             usuarioElement.innerHTML = `
                 <h2>${usuario.nome}</h2>
                 <p>${usuario.email}</p>
+                <p>ㅤ<p>
                 <button class="edit-button" onclick="editUsuario(${usuario.id})">Editar</button>
-                <button class="delete-button" onclick="deleteUsuario(${usuario.id})">Excluir</button>
+                <button class="delete-button" onclick="prepareDelete(${usuario.id})">Excluir</button>
             `;
             resultContainer.appendChild(usuarioElement);
         });
@@ -36,26 +38,25 @@ async function fetchUsuarios() {
     }
 }
 
-// Função para abrir o modal para adicionar um novo usuario
+// Função para abrir o modal para adicionar um novo usuário
 document.getElementById("openModal").onclick = () => {
     currentEditId = null; // Limpa o ID ao abrir o modal
     document.getElementById("modalTitle").innerText = "Criar usuário";
     document.getElementById("editModal").style.display = "flex"; // Abre o modal
     // Limpa os campos do formulário
-    document.getElementById("editUsuario").value = '';
+    document.getElementById("editNome").value = '';
     document.getElementById("editEmail").value = '';
     document.getElementById("editSenha").value = '';
 };
 
-// Adiciona um novo usuario ao enviar o formulário
+// Adiciona ou edita um usuário ao enviar o formulário
 document.getElementById("saveEdit").addEventListener("click", async () => {
     const nome = document.getElementById("editNome").value;
     const email = document.getElementById("editEmail").value;
     const senha = document.getElementById("editSenha").value;
-    
 
     if (currentEditId) {
-        // Editar usuario existente
+        // Editar usuário existente
         try {
             const response = await fetch(`http://localhost:5163/api/Usuarios/${currentEditId}`, {
                 method: "PUT",
@@ -63,7 +64,7 @@ document.getElementById("saveEdit").addEventListener("click", async () => {
                     "Content-Type": "application/json",
                     "Accept": "application/json"
                 },
-                body: JSON.stringify({ id: currentEditId, nome, email, senha})
+                body: JSON.stringify({ id: currentEditId, nome, email, senha })
             });
 
             if (!response.ok) throw new Error("Erro ao editar usuário");
@@ -71,7 +72,7 @@ document.getElementById("saveEdit").addEventListener("click", async () => {
             alert(`Erro: ${error.message}`);
         }
     } else {
-        // Adicionar novo usuario
+        // Adicionar novo usuário
         try {
             const response = await fetch("http://localhost:5163/api/Usuarios", {
                 method: "POST",
@@ -92,15 +93,15 @@ document.getElementById("saveEdit").addEventListener("click", async () => {
     document.getElementById("editModal").style.display = "none"; // Fecha o modal
 });
 
-// Função para editar um usuario
+// Função para editar um usuário
 async function editUsuario(id) {
-    currentEditId = id; // Armazena o ID do usuario que está sendo editado
-    document.getElementById("modalTitle").innerText = "Editar usuario";
+    currentEditId = id; // Armazena o ID do usuário que está sendo editado
+    document.getElementById("modalTitle").innerText = "Editar usuário";
 
-    // Obtém os dados do usuario
+    // Obtém os dados do usuário
     try {
         const response = await fetch(`http://localhost:5163/api/Usuarios/${id}`);
-        if (!response.ok) throw new Error("Erro ao buscar usuario para edição");
+        if (!response.ok) throw new Error("Erro ao buscar usuário para edição");
 
         const usuario = await response.json();
         document.getElementById("editNome").value = usuario.nome;
@@ -118,26 +119,51 @@ document.getElementById("closeModal").onclick = () => {
     document.getElementById("editModal").style.display = "none";
 };
 
+// Fecha o modal de confirmação ao clicar fora
 window.onclick = (event) => {
     const modal = document.getElementById("editModal");
+    const confirmDeleteModal = document.getElementById("confirmDeleteModal");
     if (event.target === modal) {
         modal.style.display = "none";
     }
+    if (event.target === confirmDeleteModal) {
+        confirmDeleteModal.style.display = "none";
+    }
 };
 
-// Função para remover um usuario
-async function deleteUsuario(id) {
-    if (!confirm("Tem certeza que deseja excluir este usuário?")) return;
+// Função para preparar a exclusão de um usuário
+function prepareDelete(id) {
+    userToDeleteId = id; // Armazena o ID do usuário a ser excluído
+    document.getElementById("confirmDeleteModal").style.display = "flex"; // Exibe o modal de confirmação
+}
+
+// Função para confirmar a exclusão de um usuário
+async function confirmDelete() {
+    if (!userToDeleteId) return;
 
     try {
-        const response = await fetch(`http://localhost:5163/api/Usuarios/${id}`, {
+        const response = await fetch(`http://localhost:5163/api/Usuarios/${userToDeleteId}`, {
             method: "DELETE",
             headers: { "Accept": "application/json" }
         });
 
         if (!response.ok) throw new Error("Erro ao excluir usuário");
-        fetchUsuarios(); // Atualiza a lista
+
+        // Atualiza a lista de usuários
+        fetchUsuarios();
+        document.getElementById("confirmDeleteModal").style.display = "none"; // Fecha o modal de confirmação
     } catch (error) {
         alert(`Erro: ${error.message}`);
+        document.getElementById("confirmDeleteModal").style.display = "none"; // Fecha o modal de erro
     }
 }
+
+// Função para cancelar a exclusão e fechar o modal
+document.getElementById("cancelDeleteButton").onclick = () => {
+    document.getElementById("confirmDeleteModal").style.display = "none";
+};
+
+// Função para fechar o modal de confirmação ao clicar no "x"
+document.getElementById("closeConfirmDeleteModal").onclick = () => {
+    document.getElementById("confirmDeleteModal").style.display = "none";
+};

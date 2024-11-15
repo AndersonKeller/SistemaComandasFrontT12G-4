@@ -7,21 +7,28 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <img src="logo.png" alt="Cluckin' Bell" class="header-image">
-    </header>
-    <main>
-        <div class="button-container">
-            <a href="../cardapio/index.html">
-                <button class="menu-button">Cardapio</button>
-            </a>
-            <button class="menu-button">Comandas</button>
-            <button class="menu-button">Cozinha</button>
-            <a href="../usuario/index.html">
-                <button class="menu-button">Usuários</button>
-            </a>
-        </div>
-    </main>
+    <button id="backButton" onclick="window.history.back()">Deslogar</button>
+
+    <div class="background"></div> <!-- Div que vai ter a imagem com desfoque -->
+    
+    <div class="content">
+        <header>
+            <img src="logo.png" alt="Cluckin' Bell" class="header-image">
+        </header>
+        <main>
+            <div class="button-container">
+                <a href="../cardapio/index.html">
+                    <button class="menu-button">Cardápio</button>
+                </a>
+                <button class="menu-button">Comandas</button>
+                <button class="menu-button">Cozinha</button>
+                <a href="../usuario/index.html">
+                    <button class="menu-button">Usuários</button>
+                </a>
+            </div>
+        </main>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>

@@ -4,16 +4,6 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f8ff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-}
-
 header {
     /* Você pode ajustar a altura do cabeçalho conforme necessário */
     height: 200px; /* Altura do cabeçalho */
@@ -50,4 +40,58 @@ header {
 
 .menu-button:hover {
     background-color: #218838;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Garante que não apareçam barras de rolagem */
+    position: relative;
+}
+
+.background {
+    position: absolute; /* Coloca a div de fundo atrás do conteúdo */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../login/background image.jpg'); /* Caminho correto da imagem */
+    background-size: cover;
+    background-position: center;
+    filter: blur(3px); /* Aplica o desfoque */
+    z-index: -1; /* Garante que o fundo não sobreponha o conteúdo */
+}
+
+.content {
+    position: relative; /* Faz o conteúdo aparecer acima da imagem de fundo */
+    z-index: 1; /* Garante que o conteúdo fique acima da imagem */
+}
+
+/* Estilo geral do botão de voltar */
+#backButton {
+    background-color: #dc3545; /* Cor de fundo verde */
+    color: white; /* Texto branco */
+    border: none; /* Remove a borda */
+    padding: 10px 20px; /* Espaçamento interno */
+    font-size: 16px; /* Tamanho da fonte */
+    cursor: pointer; /* Aponta para o cursor de clique */
+    border-radius: 5px; /* Bordas arredondadas */
+    transition: background-color 0.3s ease; /* Efeito de transição para mudança de cor */
+    position: fixed; /* Fixa o botão na tela */
+    top: 20px; /* Distância de 20px da parte superior */
+    left: 20px; /* Distância de 20px da parte esquerda */
+    z-index: 1000; /* Garante que o botão fique acima de outros elementos */
+}
+
+#backButton:hover {
+    background-color: #a32a36; /* Cor de fundo mais escura quando o mouse passa por cima */
+}
+
+#backButton:focus {
+    outline: none; /* Remove o contorno padrão ao focar */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Adiciona um efeito de foco com sombra azul */
 }
