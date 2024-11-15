@@ -71,3 +71,27 @@ body {
     z-index: 1; /* Garante que o conteúdo fique acima da imagem */
 }
 
+/* Estilo geral do botão de voltar */
+#backButton {
+    background-color: #dc3545; /* Cor de fundo verde */
+    color: white; /* Texto branco */
+    border: none; /* Remove a borda */
+    padding: 10px 20px; /* Espaçamento interno */
+    font-size: 16px; /* Tamanho da fonte */
+    cursor: pointer; /* Aponta para o cursor de clique */
+    border-radius: 5px; /* Bordas arredondadas */
+    transition: background-color 0.3s ease; /* Efeito de transição para mudança de cor */
+    position: fixed; /* Fixa o botão na tela */
+    top: 20px; /* Distância de 20px da parte superior */
+    left: 20px; /* Distância de 20px da parte esquerda */
+    z-index: 1000; /* Garante que o botão fique acima de outros elementos */
+}
+
+#backButton:hover {
+    background-color: #a32a36; /* Cor de fundo mais escura quando o mouse passa por cima */
+}
+
+#backButton:focus {
+    outline: none; /* Remove o contorno padrão ao focar */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Adiciona um efeito de foco com sombra azul */
+}

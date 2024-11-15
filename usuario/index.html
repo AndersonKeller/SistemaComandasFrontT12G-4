@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <button id="backButton" onclick="window.history.back()">Voltar</button>
     <div class="container">
         <h1>Usuários</h1>
         
@@ -33,6 +34,18 @@
                 
                 <button id="saveEdit" type="submit">Salvar Alterações</button>
             </form>
+        </div>
+    </div>
+
+    <!-- Modal de Confirmação de Exclusão -->
+    <div id="confirmDeleteModal" class="modal" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-content">
+            <button id="closeConfirmDeleteModal" class="close" aria-label="Fechar">&times;</button>
+            <h2>Tem certeza que deseja excluir este usuário?</h2>
+            <div>
+                <button onclick="confirmDelete()">Sim</button>
+                <button id="cancelDeleteButton">Não</button>
+            </div>
         </div>
     </div>
 

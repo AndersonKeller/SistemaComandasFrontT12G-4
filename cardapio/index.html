@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <button id="backButton" onclick="window.history.back()">Voltar</button>
+
     <div class="container">
         <h1>Itens do Cardápio</h1>
         
@@ -28,6 +30,15 @@
                 <input type="checkbox" id="editPossuiPreparo"> Requer Preparo
             </label>
             <button id="saveEdit">Salvar Alterações</button>
+        </div>
+    </div>
+
+    <!-- Modal de Confirmação de Exclusão -->
+    <div id="deleteConfirmationModal" class="modal">
+        <div class="modal-content">
+            <h2>Tem certeza que deseja excluir este item?</h2>
+            <button id="confirmDelete" class="delete-button">Excluir</button>
+            <button id="cancelDelete" class="edit-button">Cancelar</button>
         </div>
     </div>
 

@@ -1,4 +1,5 @@
 let currentEditId = null; // Para armazenar o ID do item que está sendo editado
+let currentDeleteId = null; // Para armazenar o ID do item que será excluído
 
 // Carrega os itens ao carregar a página
 window.addEventListener("DOMContentLoaded", fetchCardapioItems);
@@ -29,7 +30,7 @@ async function fetchCardapioItems() {
                 <p class="price">Preço: R$${parseFloat(item.preco).toFixed(2)}</p>
                 <p class="preparation">${item.possuiPreparo ? "Requer preparo" : "Pronto para servir"}</p>
                 <button class="edit-button" onclick="editItem(${item.id})">Editar</button>
-                <button class="delete-button" onclick="deleteItem(${item.id})">Excluir</button>
+                <button class="delete-button" onclick="openDeleteConfirmationModal(${item.id})">Excluir</button>
             `;
             resultContainer.appendChild(itemElement);
         });
@@ -129,19 +130,31 @@ window.onclick = (event) => {
     }
 };
 
-// Função para remover um item
-async function deleteItem(id) {
-    if (!confirm("Tem certeza que deseja excluir este item?")) return;
-
-    try {
-        const response = await fetch(`http://localhost:5163/api/CardapioItems/${id}`, {
-            method: "DELETE",
-            headers: { "Accept": "application/json" }
-        });
-
-        if (!response.ok) throw new Error("Erro ao excluir item");
-        fetchCardapioItems(); // Atualiza a lista
-    } catch (error) {
-        alert(`Erro: ${error.message}`);
-    }
+// Função para abrir o modal de confirmação de exclusão
+function openDeleteConfirmationModal(id) {
+    currentDeleteId = id; // Armazena o ID do item a ser excluído
+    document.getElementById("deleteConfirmationModal").style.display = "flex"; // Exibe o modal
 }
+
+// Função para fechar o modal de confirmação de exclusão
+document.getElementById("cancelDelete").onclick = () => {
+    document.getElementById("deleteConfirmationModal").style.display = "none"; // Fecha o modal
+};
+
+// Função para confirmar a exclusão
+document.getElementById("confirmDelete").onclick = async () => {
+    if (currentDeleteId !== null) {
+        try {
+            const response = await fetch(`http://localhost:5163/api/CardapioItems/${currentDeleteId}`, {
+                method: "DELETE",
+                headers: { "Accept": "application/json" }
+            });
+
+            if (!response.ok) throw new Error("Erro ao excluir item");
+            fetchCardapioItems(); // Atualiza a lista
+        } catch (error) {
+            alert(`Erro: ${error.message}`);
+        }
+    }
+    document.getElementById("deleteConfirmationModal").style.display = "none"; // Fecha o modal
+};

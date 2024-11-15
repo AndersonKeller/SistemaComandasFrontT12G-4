@@ -81,11 +81,25 @@ button {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
+/* Botão de Fechar (X) - Vermelho */
 .close {
-    float: right;
-    font-size: 24px;
+    width: 30px;  /* Tamanho fixo, igual para largura e altura */
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;  /* Tamanho do 'X' */
+    background-color: transparent;  /* Remover o fundo azul */
+    border: 2px solid #dc3545;  /* Borda vermelha para o "X" */
+    border-radius: 20%;  /* Deixa o botão circular */
+    color: #dc3545;  /* Cor vermelha do 'X' */
     cursor: pointer;
-    color: #333;
+    transition: background-color 0.3s, color 0.3s;  /* Adiciona um efeito de transição suave */
+}
+
+.close:hover {
+    background-color: #f0f0f0;  /* Fundo claro ao passar o mouse */
+    color: #dc3545;  /* Cor vermelha para o 'X' quando hover */
 }
 
 h2 {
@@ -105,7 +119,7 @@ input[type="text"], input[type="email"], input[type="password"] {
 
 #saveEdit {
     padding: 10px;
-    background-color: #28a745;
+    background-color: #28a745; /* Verde para salvar */
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -179,7 +193,7 @@ input[type="text"], input[type="email"], input[type="password"] {
 }
 
 #confirmDeleteModal h2 {
-    color: #dc3545; /* Cor vermelha para o título */
+    color: #000000; /* Cor vermelha para o título */
     font-size: 1.5rem;
     margin-bottom: 20px;
 }
@@ -188,7 +202,8 @@ input[type="text"], input[type="email"], input[type="password"] {
     float: right;
     font-size: 24px;
     cursor: pointer;
-    color: #333;
+    color: #ffffff;
+    background-color: #dc3545;
 }
 
 #confirmDeleteModal button {
@@ -198,12 +213,12 @@ input[type="text"], input[type="email"], input[type="password"] {
 }
 
 #confirmDeleteButton {
-    background-color: #dc3545; /* Botão vermelho para confirmar exclusão */
+    background-color: #28a745; /* Botão verde para confirmar exclusão */
     color: #fff;
 }
 
 #cancelDeleteButton {
-    background-color: #ffc107; /* Botão amarelo para cancelar */
+    background-color: #dc3545; /* Botão vermelho para cancelar */
     color: #fff;
     margin-left: 10px;
 }
@@ -216,4 +231,28 @@ input[type="text"], input[type="email"], input[type="password"] {
     to {
         opacity: 1;
     }
+}
+/* Estilo geral do botão de voltar */
+#backButton {
+    background-color: #dc3545; /* Cor de fundo verde */
+    color: white; /* Texto branco */
+    border: none; /* Remove a borda */
+    padding: 10px 20px; /* Espaçamento interno */
+    font-size: 16px; /* Tamanho da fonte */
+    cursor: pointer; /* Aponta para o cursor de clique */
+    border-radius: 5px; /* Bordas arredondadas */
+    transition: background-color 0.3s ease; /* Efeito de transição para mudança de cor */
+    position: fixed; /* Fixa o botão na tela */
+    top: 20px; /* Distância de 20px da parte superior */
+    left: 20px; /* Distância de 20px da parte esquerda */
+    z-index: 1000; /* Garante que o botão fique acima de outros elementos */
+}
+
+#backButton:hover {
+    background-color: #a32a36; /* Cor de fundo mais escura quando o mouse passa por cima */
+}
+
+#backButton:focus {
+    outline: none; /* Remove o contorno padrão ao focar */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Adiciona um efeito de foco com sombra azul */
 }

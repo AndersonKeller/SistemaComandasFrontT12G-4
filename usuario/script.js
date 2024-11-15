@@ -148,7 +148,9 @@ async function confirmDelete() {
         });
 
         if (!response.ok) throw new Error("Erro ao excluir usuário");
-        fetchUsuarios(); // Atualiza a lista
+
+        // Atualiza a lista de usuários
+        fetchUsuarios();
         document.getElementById("confirmDeleteModal").style.display = "none"; // Fecha o modal de confirmação
     } catch (error) {
         alert(`Erro: ${error.message}`);
