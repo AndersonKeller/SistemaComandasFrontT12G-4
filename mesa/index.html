@@ -1,38 +1,73 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mesas de Restaurante</title>
-    <!-- Link para o CSS externo -->
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mesas do Restaurante</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
+  <div class="container">
     <h1>Mesas do Restaurante</h1>
-    <div id="mesas" class="mesas-container">
-        <!-- As mesas serão inseridas aqui via JavaScript -->
+    
+    <!-- Botão para abrir o modal de criação de comanda -->
+    <button id="novaComanda" class="btn-comanda">Nova Comanda</button>
+
+    <!-- Lista de mesas -->
+    <div id="mesas"></div>
+
+    <!-- Modal Criar Comanda -->
+    <div id="modalCriarComanda" class="modal">
+      <div class="modal-content">
+        <h2>Criar Comanda</h2>
+        <label for="nomeCliente">Nome do Cliente:</label>
+        <input type="text" id="nomeCliente" placeholder="Nome do Cliente">
+        
+        <label for="numeroMesa">Número da Mesa:</label>
+        <input type="number" id="numeroMesa" placeholder="Número da Mesa">
+        
+        <button id="adicionarItens">Adicionar Itens</button>
+        <button id="fecharModal" class="btn-fechar">Fechar</button>
+      </div>
     </div>
-
-    <!-- Modal para exibir detalhes das comandas -->
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span id="closeModal" class="close">&times;</span>
-            <h2>Detalhes das Comandas</h2>
-            <p><strong>Número da Mesa:</strong> <span id="numeroMesa"></span></p>
-            <h3>Comandas:</h3>
-            <div id="comandasDetalhes"></div>
-
-            <!-- Ações no Modal -->
-            <div>
-                <button id="adicionarComanda">Adicionar Comanda</button>
-                <button id="removerComanda">Remover Comanda</button>
-            </div>
-        </div>
+  
+    <!-- Modal Adicionar Itens -->
+    <div id="cardapioModal" class="modal">
+      <div class="modal-content">
+        <h2>Adicionar Itens ao Cardápio</h2>
+        <div id="itensCardapio"></div>
+        <button id="revisarPedido">Revisar Pedido</button>
+        <button id="fecharCardapioModal" class="btn-fechar">Fechar</button>
+      </div>
     </div>
+  
+    <!-- Modal Revisar Pedido -->
+    <div id="revisarPedidoModal" class="modal">
+      <div id="feedbackMessage" class="feedback-message"></div>
+      <div class="modal-content">
+        <h2>Revisar Pedido</h2>
+        <p><strong>Nome do Cliente:</strong> <span id="revisarNomeCliente"></span></p>
+        <p><strong>Número da Mesa:</strong> <span id="revisarNumeroMesa"></span></p>
+        <p><strong>Itens Selecionados:</strong></p>
+        <ul id="revisarItens"></ul>
+        <button id="criarComanda" class="btn-comanda">Criar Comanda</button>
+        <button id="fecharRevisarPedidoModal" class="btn-fechar">Fechar</button>
+      </div>
+    </div><!-- Modal Mesa Ocupada -->
+    <div id="modalMesaOcupada" class="modal">
+      <div class="modal-content">
+        <h2>Mesa Ocupada</h2>
+        <p><strong>Número da Mesa:</strong> <span id="numeroMesaOcupada"></span></p>
+        <p><strong>Cliente:</strong> <span id="clienteOcupado"></span></p>
+        <p><strong>Itens da Comanda:</strong></p>
+        <ul id="itensOcupados"></ul>
+        <p><strong>Total:</strong> <span id="totalOcupado"></span></p>
+        <button id="btnFinalizarComanda">Finalizar Comanda</button>
+        <button class="btn-fechar">Fechar</button>
+      </div>
+    </div>
+  </div>
 
-    <!-- Link para o JavaScript externo -->
-    <script src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
 </html>

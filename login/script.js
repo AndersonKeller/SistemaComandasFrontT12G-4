@@ -11,7 +11,7 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
     }
 
     try {
-        const response = await fetch('http://localhost:5163/api/Usuarios', {
+        const response = await fetch('http://www.cluckinbell123.somee.com/api/Usuarios', {
             method: 'GET',
             headers: {
                 'Accept': 'application/json' // Alterado para receber JSON

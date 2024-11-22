@@ -10,7 +10,7 @@ async function fetchUsuarios() {
     resultContainer.innerHTML = "<p>Carregando...</p>";
 
     try {
-        const response = await fetch("http://localhost:5163/api/Usuarios", {
+        const response = await fetch("http://www.cluckinbell123.somee.com/api/Usuarios", {
             headers: {
                 "Accept": "application/json"
             }
@@ -58,7 +58,7 @@ document.getElementById("saveEdit").addEventListener("click", async () => {
     if (currentEditId) {
         // Editar usuário existente
         try {
-            const response = await fetch(`http://localhost:5163/api/Usuarios/${currentEditId}`, {
+            const response = await fetch(`http://www.cluckinbell123.somee.com/api/Usuarios/${currentEditId}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -74,7 +74,7 @@ document.getElementById("saveEdit").addEventListener("click", async () => {
     } else {
         // Adicionar novo usuário
         try {
-            const response = await fetch("http://localhost:5163/api/Usuarios", {
+            const response = await fetch("http://www.cluckinbell123.somee.com/api/Usuarios", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -100,7 +100,7 @@ async function editUsuario(id) {
 
     // Obtém os dados do usuário
     try {
-        const response = await fetch(`http://localhost:5163/api/Usuarios/${id}`);
+        const response = await fetch(`http://www.cluckinbell123.somee.com/api/Usuarios/${id}`);
         if (!response.ok) throw new Error("Erro ao buscar usuário para edição");
 
         const usuario = await response.json();
@@ -142,7 +142,7 @@ async function confirmDelete() {
     if (!userToDeleteId) return;
 
     try {
-        const response = await fetch(`http://localhost:5163/api/Usuarios/${userToDeleteId}`, {
+        const response = await fetch(`http://www.cluckinbell123.somee.com/api/Usuarios/${userToDeleteId}`, {
             method: "DELETE",
             headers: { "Accept": "application/json" }
         });

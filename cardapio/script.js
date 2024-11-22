@@ -10,7 +10,7 @@ async function fetchCardapioItems() {
     resultContainer.innerHTML = "<p>Carregando...</p>";
 
     try {
-        const response = await fetch("http://localhost:5163/api/CardapioItems", {
+        const response = await fetch("http://www.cluckinbell123.somee.com/api/CardapioItems", {
             headers: {
                 "Accept": "application/json"
             }
@@ -61,7 +61,7 @@ document.getElementById("saveEdit").addEventListener("click", async () => {
     if (currentEditId) {
         // Editar item existente
         try {
-            const response = await fetch(`http://localhost:5163/api/CardapioItems/${currentEditId}`, {
+            const response = await fetch(`http://www.cluckinbell123.somee.com/api/CardapioItems/${currentEditId}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -77,7 +77,7 @@ document.getElementById("saveEdit").addEventListener("click", async () => {
     } else {
         // Adicionar novo item
         try {
-            const response = await fetch("http://localhost:5163/api/CardapioItems", {
+            const response = await fetch("http://www.cluckinbell123.somee.com/api/CardapioItems", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -103,7 +103,7 @@ async function editItem(id) {
 
     // Obtém os dados do item
     try {
-        const response = await fetch(`http://localhost:5163/api/CardapioItems/${id}`);
+        const response = await fetch(`http://www.cluckinbell123.somee.com/api/CardapioItems/${id}`);
         if (!response.ok) throw new Error("Erro ao buscar item para edição");
 
         const item = await response.json();
@@ -145,7 +145,7 @@ document.getElementById("cancelDelete").onclick = () => {
 document.getElementById("confirmDelete").onclick = async () => {
     if (currentDeleteId !== null) {
         try {
-            const response = await fetch(`http://localhost:5163/api/CardapioItems/${currentDeleteId}`, {
+            const response = await fetch(`http://www.cluckinbell123.somee.com/api/CardapioItems/${currentDeleteId}`, {
                 method: "DELETE",
                 headers: { "Accept": "application/json" }
             });
