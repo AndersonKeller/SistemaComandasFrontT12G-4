@@ -87,7 +87,6 @@ h1 {
     transform: scale(0.95); /* Efeito de pressionar */
 }
 
-
 #resultContainer {
     display: flex;
     flex-wrap: wrap;
@@ -98,41 +97,30 @@ h1 {
     padding-right: 10px; /* Espaço para a barra de rolagem */
 }
 
-.resultItem {
+.resultUsuario {
     width: calc(50% - 10px);
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 20px;
-    text-align: left;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.resultItem:hover {
+.resultUsuario:hover {
     transform: translateY(-5px); /* Efeito de "levitar" ao passar o mouse */
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
-.resultItem h2 {
+.resultUsuario h2 {
     font-size: 18px;
     color: #007bff;
     margin-bottom: 10px;
 }
 
-.resultItem p {
+.resultUsuario p {
     font-size: 14px;
     color: #555;
-}
-
-.resultItem .price {
-    font-weight: bold;
-    color: #28a745;
-}
-
-.resultItem .preparation {
-    font-size: 13px;
-    color: #888;
 }
 
 button {
@@ -215,7 +203,9 @@ h2 {
 }
 
 #editModal input[type="text"],
-#editModal input[type="number"] {
+#editModal input[type="number"],
+#editModal input[type="email"],
+#editModal input[type="password"] {
     width: calc(100% - 20px);
     padding: 10px;
     margin-bottom: 15px;

@@ -1,6 +1,3 @@
-let currentEditId = null; // Para armazenar o ID do usuário que está sendo editado
-let userToDeleteId = null; // Para armazenar o ID do usuário que será excluído
-
 // Carrega os itens ao carregar a página
 window.addEventListener("DOMContentLoaded", fetchUsuarios);
 
@@ -10,7 +7,7 @@ async function fetchUsuarios() {
     resultContainer.innerHTML = "<p>Carregando...</p>";
 
     try {
-        const response = await fetch("http://localhost:5163/api/Usuarios", {
+        const response = await fetch("http://www.cluckinbell123.somee.com/api/Usuarios", {
             headers: {
                 "Accept": "application/json"
             }
@@ -24,13 +21,38 @@ async function fetchUsuarios() {
         data.forEach(usuario => {
             const usuarioElement = document.createElement("div");
             usuarioElement.classList.add("resultUsuario");
-            usuarioElement.innerHTML = `
+
+            // Cria o conteúdo HTML do usuário
+            let buttonsHTML = `
                 <h2>${usuario.nome}</h2>
                 <p>${usuario.email}</p>
                 <p>ㅤ<p>
-                <button class="edit-button" onclick="editUsuario(${usuario.id})">Editar</button>
-                <button class="delete-button" onclick="prepareDelete(${usuario.id})">Excluir</button>
+                <button class="edit-button">Editar</button>
             `;
+            
+            // Se não for o admin, adiciona o botão de excluir
+            if (usuario.nome !== 'admin') {
+                buttonsHTML += `<button class="delete-button">Excluir</button>`;
+            }
+
+            // Define o conteúdo HTML do elemento do usuário
+            usuarioElement.innerHTML = buttonsHTML;
+
+            // Adiciona os eventos aos botões depois que o HTML é inserido
+            const editButton = usuarioElement.querySelector('.edit-button');
+            const deleteButton = usuarioElement.querySelector('.delete-button');
+
+            // Se o botão de editar existir, adiciona o evento
+            if (editButton) {
+                editButton.addEventListener("click", () => editUsuario(usuario.id));
+            }
+
+            // Se o botão de excluir existir, adiciona o evento
+            if (deleteButton) {
+                deleteButton.addEventListener("click", () => prepareDelete(usuario.id));
+            }
+
+            // Adiciona o usuário ao container
             resultContainer.appendChild(usuarioElement);
         });
     } catch (error) {
@@ -58,7 +80,7 @@ document.getElementById("saveEdit").addEventListener("click", async () => {
     if (currentEditId) {
         // Editar usuário existente
         try {
-            const response = await fetch(`http://localhost:5163/api/Usuarios/${currentEditId}`, {
+            const response = await fetch(`http://www.cluckinbell123.somee.com/api/Usuarios/${currentEditId}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -74,7 +96,7 @@ document.getElementById("saveEdit").addEventListener("click", async () => {
     } else {
         // Adicionar novo usuário
         try {
-            const response = await fetch("http://localhost:5163/api/Usuarios", {
+            const response = await fetch("http://www.cluckinbell123.somee.com/api/Usuarios", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -100,7 +122,7 @@ async function editUsuario(id) {
 
     // Obtém os dados do usuário
     try {
-        const response = await fetch(`http://localhost:5163/api/Usuarios/${id}`);
+        const response = await fetch(`http://www.cluckinbell123.somee.com/api/Usuarios/${id}`);
         if (!response.ok) throw new Error("Erro ao buscar usuário para edição");
 
         const usuario = await response.json();
@@ -142,7 +164,7 @@ async function confirmDelete() {
     if (!userToDeleteId) return;
 
     try {
-        const response = await fetch(`http://localhost:5163/api/Usuarios/${userToDeleteId}`, {
+        const response = await fetch(`http://www.cluckinbell123.somee.com/api/Usuarios/${userToDeleteId}`, {
             method: "DELETE",
             headers: { "Accept": "application/json" }
         });

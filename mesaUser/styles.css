@@ -64,12 +64,12 @@ button {
   cursor: pointer;
   font-size: 16px;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  background-color: #4CAF50;
+  background-color: #007bff;
   color: white;
 }
 
 button:hover {
-  background-color: #054608;
+  background-color: #0056b3;
   transform: scale(1.05);
 }
 
@@ -161,22 +161,35 @@ input[type="text"]:focus, input[type="number"]:focus {
 /* Estilos para os itens no modal */
 .item-cardapio {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Garante que os itens se distribuam com espaço entre eles */
+  align-items: center; /* Alinha verticalmente os itens no centro */
   margin: 10px 0;
+  padding: 10px 0; /* Adiciona um pouco de espaçamento interno */
+  border-bottom: 1px solid #ccc; /* Linha sutil para separar os itens */
 }
 
+/* Ajuste para os botões dentro do item-cardapio */
 .item-cardapio button {
-  margin: 0 5px;
+  margin: 0 5px; /* Garante que os botões não se sobreponham */
+  padding: 5px 10px; /* Espaçamento adequado para os botões */
+  font-size: 14px; /* Ajusta o tamanho da fonte para botões */
+  cursor: pointer; /* Indica que é interativo */
+}
+
+/* Adiciona estilo ao item-cardapio quando estiver selecionado ou em hover */
+.item-cardapio:hover {
+  background-color: #f0f0f0; /* Dá um destaque suave quando o mouse passar por cima */
+  border-radius: 5px; /* Suaviza os cantos para uma aparência mais amigável */
 }
 
 #revisarPedido {
-  background-color:  #007bff;
-  border-color: #007bff;
+  background-color: #FF9800;
+  border-color: #FF9800;
 }
 
 #revisarPedido:hover {
-  background-color:  #144e8b;
-  border-color: #007bff;
+  background-color: #FF8C00;
+  border-color: #FF8C00;
 }
 
 /* Estilos de visualização da lista de mesas */
@@ -291,6 +304,10 @@ button#fecharModal:hover, button#fecharCardapioModal:hover, button#fecharRevisar
 /* Feedback de sucesso */
 .feedback-message.success {
   background-color: rgba(0, 255, 0, 0.7);
+}
+
+#criarMesa, #removerMesa {
+  display: none;
 }
 #revisarItens {
   list-style-type: none; /* Remove os pontos de lista */

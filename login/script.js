@@ -11,7 +11,7 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
     }
 
     try {
-        const response = await fetch('http://localhost:5163/api/Usuarios', {
+        const response = await fetch('http://www.cluckinbell123.somee.com/api/Usuarios', {
             method: 'GET',
             headers: {
                 'Accept': 'application/json' // Alterado para receber JSON
@@ -30,9 +30,13 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
             messageDiv.textContent = 'Login bem-sucedido!';
             messageDiv.style.color = 'green';
 
-            // Redireciona para a página \main\index.html após 1 segundo
+            // Redireciona dependendo se o usuário for o admin ou não
             setTimeout(() => {
-                window.location.href = '../main/index.html'; 
+                if (usuarioEncontrado.nome === 'admin') {
+                    window.location.href = '../main/index.html'; // Redireciona o admin para a página principal
+                } else {
+                    window.location.href = '../mainUser/index.html'; // Redireciona os outros usuários para a página do usuário
+                }
             }, 1000);
         } else {
             messageDiv.textContent = 'Nome ou senha incorretos!';

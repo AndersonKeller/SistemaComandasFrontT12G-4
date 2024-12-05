@@ -1,0 +1,201 @@
+/* Resetando margens, padding e aplicando box-sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+/* Estilo global para a página */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    background-color: #f0f8ff;
+    position: relative;
+    overflow: hidden;
+}
+
+body::before {
+    content: ''; /* Cria o pseudo-elemento */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../login/background image.jpg'); /* Coloque o caminho da sua imagem */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    filter: blur(8px);
+    z-index: -1;
+}
+
+/* Contêiner principal */
+.kanban-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    height: 100vh;
+    box-sizing: border-box;
+    gap: 20px; /* Espaçamento entre as colunas */
+}
+
+/* Estilo das colunas */
+.kanban-column {
+    background-color: rgba(255, 255, 255, 0.9); /* Fundo branco com opacidade */
+    border-radius: 10px;
+    width: 30%; /* Largura das colunas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Para que a coluna ocupe toda a altura */
+    overflow: hidden; /* Esconde qualquer rolagem na coluna */
+}
+
+/* Título das colunas */
+.kanban-column h2 {
+    text-align: center;
+    color: #333;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+/* A área de cards terá rolagem independente */
+.kanban-cards {
+    overflow-y: auto; /* Permite rolagem apenas nos cards */
+    flex-grow: 1; /* Faz com que a área dos cards ocupe o espaço restante da coluna */
+    padding-right: 10px; /* Para evitar que os cards fiquem encostados na borda quando a rolagem aparecer */
+    max-height: calc(100vh - 120px); /* Ajuste para garantir que a área de cards tenha altura limitada (com base no tamanho do título + espaçamento) */
+}
+
+/* Estilo dos cards */
+.card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Efeito de "levitar" ao passar o mouse */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.card p {
+    margin: 5px 0;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+/* Estilo dos botões */
+button {
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s, transform 0.2s ease;
+    margin: 5px; /* Espaçamento entre os botões */
+}
+
+button:hover {
+    background-color: #0056b3; /* Cor mais escura no hover */
+    transform: scale(1.05); /* Efeito de aumento no hover */
+}
+
+button:active {
+    transform: scale(0.95); /* Efeito de diminuição no clique */
+}
+
+button.avancar-status {
+    background-color: #4CAF50; /* Verde para avançar */
+}
+
+button.avancar-status:hover {
+    background-color: #45a049;
+}
+
+button.voltar-status {
+    background-color: #dc3545; /* Laranja para voltar */
+}
+
+button.voltar-status:hover {
+    background-color: #7c1c26;
+}
+
+/* Container dos botões "Voltar" e "Avançar" alinhados horizontalmente */
+.card .button-container {
+    display: flex;
+    justify-content: space-between; /* Espaça os botões */
+    gap: 10px; /* Adiciona espaçamento entre os botões */
+    margin-top: 10px; /* Espaço acima dos botões */
+}
+
+/* Estilo geral do botão de voltar */
+#backButton {
+    background-color: #dc3545; /* Cor de fundo verde */
+    color: white; /* Texto branco */
+    border: none; /* Remove a borda */
+    padding: 10px 20px; /* Espaçamento interno */
+    font-size: 16px; /* Tamanho da fonte */
+    cursor: pointer; /* Aponta para o cursor de clique */
+    border-radius: 5px; /* Bordas arredondadas */
+    transition: background-color 0.3s ease; /* Efeito de transição para mudança de cor */
+    position: fixed; /* Fixa o botão na tela */
+    top: 20px; /* Distância de 20px da parte superior */
+    left: 20px; /* Distância de 20px da parte esquerda */
+    z-index: 1000; /* Garante que o botão fique acima de outros elementos */
+}
+
+#backButton:hover {
+    background-color: #a32a36; /* Cor de fundo mais escura quando o mouse passa por cima */
+}
+
+#backButton:focus {
+    outline: none; /* Remove o contorno padrão ao focar */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Adiciona um efeito de foco com sombra azul */
+}
+
+/* Feedback visual */
+.feedback-message {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    display: none;
+    z-index: 1000;
+    max-width: 90%;
+    text-align: center;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.feedback-message.show {
+    display: block;
+    opacity: 1;
+}
+
+.feedback-message.error {
+    background-color: rgba(255, 0, 0, 0.7);
+}
+
+.feedback-message.success {
+    background-color: rgba(0, 255, 0, 0.7);
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuários</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button id="backButton" onclick="window.history.back()">Voltar</button>
+    <div class="container">
+        <h1>Usuários</h1>
+
+        <!-- Contêiner de Resultados -->
+        <div id="resultContainer" aria-live="polite"></div>
+    </div>
+
+    <!-- Modal de Edição e Criação (removido) -->
+    <div id="editModal" class="modal" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-content">
+            <button id="closeModal" class="close" aria-label="Fechar">&times;</button>
+            <h2 id="modalTitle">Criar usuário</h2>
+            <form id="addUsuarioForm" onsubmit="event.preventDefault();">
+                <label for="editNome">Nome</label>
+                <input type="text" id="editNome" placeholder="Nome" required>
+                
+                <label for="editEmail">Email</label>
+                <input type="email" id="editEmail" placeholder="Email" required>
+                
+                <label for="editSenha">Senha</label>
+                <input type="password" id="editSenha" placeholder="Senha" required>
+                
+                <button id="saveEdit" type="submit">Salvar Alterações</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Confirmação de Exclusão (removido) -->
+    <div id="confirmDeleteModal" class="modal" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-content">
+            <button id="closeConfirmDeleteModal" class="close" aria-label="Fechar">&times;</button>
+            <h2>Tem certeza que deseja excluir este usuário?</h2>
+            <div>
+                <button onclick="confirmDelete()">Sim</button>
+                <button id="cancelDeleteButton">Não</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
